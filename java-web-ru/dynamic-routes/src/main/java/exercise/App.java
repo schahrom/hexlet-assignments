@@ -31,7 +31,7 @@ public final class App {
            var data = Data.getCompanies();
            if( id > data.size()) {
                context.status(404);
-               context.result("Company not found.");
+               context.result("Company not found");
            } else {
                context.json(data.get(id - 1));
            }
