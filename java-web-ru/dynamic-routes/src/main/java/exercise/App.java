@@ -1,6 +1,8 @@
 package exercise;
 
 import io.javalin.Javalin;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +35,13 @@ public final class App {
                context.status(404);
                context.result("Company not found");
            } else {
-               context.json(data.get(id - 1));
+               Map<String, String> result = new HashMap<>();
+               for (Map<String,String> company : data) {
+                   if (Integer.parseInt(company.get("id")) == id) {
+                       result = company;
+                   }
+               }
+               context.json(result);
            }
         });
 
